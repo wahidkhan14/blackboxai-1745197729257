@@ -1,0 +1,271 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SignFlow Templates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    /* Custom scrollbar for sidebar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #1e293b;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-[#0B1229] text-[#D1D5DB] font-sans min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="flex flex-col justify-between bg-[#0F172A] w-44 min-h-screen p-4">
+    <div>
+      <div class="flex items-center space-x-2 mb-8">
+        <div class="bg-[#2563EB] rounded-md w-8 h-8 flex items-center justify-center text-white font-bold text-lg">
+          S
+        </div>
+        <span class="text-white font-semibold text-base select-none">SignFlow</span>
+      </div>
+      <button
+        class="mb-6 w-full bg-gradient-to-r from-[#7C3AED] to-[#4F46E5] text-white text-sm font-medium py-2 rounded-md focus:outline-none"
+      >
+        + New Document
+      </button>
+      <nav class="flex flex-col space-y-3 text-sm">
+        <a
+          href="#"
+          class="flex items-center space-x-3 text-[#94A3B8] hover:text-white"
+        >
+          <i class="fas fa-th-large text-base w-5"></i>
+          <span>Dashboard</span>
+        </a>
+        <a
+          href="#"
+          class="flex items-center space-x-3 text-white border border-white border-opacity-60 rounded px-3 py-1"
+          aria-current="page"
+        >
+          <i class="far fa-file-alt text-base w-5"></i>
+          <span>Templates</span>
+        </a>
+        <a
+          href="#"
+          class="flex items-center space-x-3 text-[#94A3B8] hover:text-white"
+        >
+          <i class="fas fa-user-friends text-base w-5"></i>
+          <span>Contacts</span>
+        </a>
+        <a
+          href="#"
+          class="flex items-center space-x-3 text-[#94A3B8] hover:text-white"
+        >
+          <i class="fas fa-cog text-base w-5"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </div>
+    <div class="bg-[#1E293B] rounded-md p-3 flex items-center space-x-3 text-xs text-[#94A3B8]">
+      <i class="fas fa-shield-alt text-[#2563EB] text-lg"></i>
+      <div>
+        <p class="text-[#60A5FA] font-semibold">Compliance</p>
+        <p>Your documents are secure and compliant</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 p-6">
+    <!-- Top bar -->
+    <header
+      class="flex items-center justify-between mb-6 border-b border-[#1E293B]"
+      aria-label="Top navigation"
+    >
+      <form class="flex-1 max-w-lg">
+        <input
+          type="search"
+          placeholder="Search..."
+          class="w-full bg-[#14213D] rounded-md py-2 px-4 text-[#94A3B8] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+          aria-label="Search"
+        />
+      </form>
+      <div class="flex items-center space-x-6 ml-6 text-[#94A3B8]">
+        <button
+          aria-label="Toggle dark mode"
+          class="hover:text-white focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded"
+        >
+          <i class="fas fa-sun"></i>
+        </button>
+        <button
+          aria-label="Notifications"
+          class="hover:text-white focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded"
+        >
+          <i class="fas fa-bell"></i>
+        </button>
+        <button
+          aria-label="Settings"
+          class="hover:text-white focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded"
+        >
+          <i class="fas fa-cog"></i>
+        </button>
+        <button
+          aria-label="User profile"
+          class="bg-[#1E293B] w-8 h-8 rounded-full flex items-center justify-center text-[#94A3B8] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+        >
+          <i class="fas fa-user"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Document Templates header -->
+    <section class="mb-6 max-w-5xl">
+      <h1 class="text-white font-bold text-lg mb-1">Document Templates</h1>
+      <p class="text-[#94A3B8] text-sm">
+        Browse and use pre-built templates or create your own
+      </p>
+    </section>
+
+    <!-- Search and controls -->
+    <section
+      class="mb-6 max-w-5xl flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0"
+    >
+      <input
+        type="search"
+        placeholder="Search templates..."
+        class="flex-1 max-w-lg bg-[#14213D] rounded-md py-2 px-4 text-[#94A3B8] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+        aria-label="Search templates"
+      />
+      <div class="flex items-center space-x-3">
+        <button
+          class="bg-[#14213D] text-[#94A3B8] text-sm rounded-md py-2 px-4 hover:bg-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+        >
+          Sort
+        </button>
+        <button
+          class="bg-[#14213D] text-[#94A3B8] text-sm rounded-md py-2 px-4 hover:bg-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+        >
+          Filter
+        </button>
+        <button
+          class="bg-[#2563EB] text-white text-sm rounded-md py-2 px-4 flex items-center space-x-1 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+        >
+          <i class="fas fa-plus"></i>
+          <span>Create Template</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Popular button -->
+    <section class="mb-6 max-w-5xl">
+      <button
+        class="bg-[#14213D] text-[#94A3B8] text-sm rounded-md py-2 px-4 flex items-center space-x-1 shadow-[0_0_10px_#14213D] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+      >
+        <i class="far fa-star"></i>
+        <span>Popular</span>
+      </button>
+    </section>
+
+    <!-- Templates grid -->
+    <section
+      class="max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      aria-label="Document templates"
+    >
+      <!-- Template 1 -->
+      <article
+        class="bg-[#14213D] rounded-md p-4 flex flex-col justify-between"
+        tabindex="0"
+      >
+        <div class="flex items-center space-x-3 mb-2">
+          <i class="far fa-file-alt text-[#2563EB] text-lg"></i>
+          <div>
+            <h2 class="text-white font-semibold text-sm leading-tight">
+              Sales Contract
+            </h2>
+            <p class="text-[#94A3B8] text-xs">Sales</p>
+          </div>
+          <span
+            class="ml-auto bg-[#92400E] text-[10px] font-semibold rounded-full px-2 py-0.5 select-none"
+            >Popular</span
+          >
+        </div>
+        <p class="text-[#94A3B8] text-xs mb-4 leading-snug">
+          Standard sales agreement template with customizable terms and
+          signature fields
+        </p>
+        <div class="flex items-center space-x-3 text-xs text-[#D1D5DB]">
+          <span>Preview</span>
+          <button
+            class="bg-[#2563EB] text-white text-xs rounded-md py-1 px-3 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+          >
+            Use Template
+          </button>
+        </div>
+      </article>
+
+      <!-- Template 2 -->
+      <article
+        class="bg-[#14213D] rounded-md p-4 flex flex-col justify-between"
+        tabindex="0"
+      >
+        <div class="flex items-center space-x-3 mb-2">
+          <i class="far fa-file-alt text-[#2563EB] text-lg"></i>
+          <div>
+            <h2 class="text-white font-semibold text-sm leading-tight">
+              NDA Agreement
+            </h2>
+            <p class="text-[#94A3B8] text-xs">Legal</p>
+          </div>
+          <span
+            class="ml-auto bg-[#92400E] text-[10px] font-semibold rounded-full px-2 py-0.5 select-none"
+            >Popular</span
+          >
+        </div>
+        <p class="text-[#94A3B8] text-xs mb-4 leading-snug">
+          Comprehensive non-disclosure agreement to protect sensitive
+          information
+        </p>
+        <div class="flex items-center space-x-3 text-xs text-[#D1D5DB]">
+          <span>Preview</span>
+          <button
+            class="bg-[#2563EB] text-white text-xs rounded-md py-1 px-3 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+          >
+            Use Template
+          </button>
+        </div>
+      </article>
+
+      <!-- Template 3 -->
+      <article
+        class="bg-[#14213D] rounded-md p-4 flex flex-col justify-between"
+        tabindex="0"
+      >
+        <div class="flex items-center space-x-3 mb-2">
+          <i class="far fa-file-alt text-[#2563EB] text-lg"></i>
+          <div>
+            <h2 class="text-white font-semibold text-sm leading-tight">
+              HIPAA Business Associate Agreement
+            </h2>
+            <p class="text-[#94A3B8] text-xs">Healthcare</p>
+          </div>
+          <span
+            class="ml-auto bg-[#92400E] text-[10px] font-semibold rounded-full px-2 py-0.5 select-none"
+            >Popular</span
+          >
+        </div>
+        <p class="text-[#94A3B8] text-xs mb-4 leading-snug">
+          Agreement ensuring HIPAA compliance for healthcare data sharing
+        </p>
+        <div class="flex items-center space-x-3 text-xs text-[#D1D5DB]">
+          <span>Preview</span>
+          <button
+            class="bg-[#2563EB] text-white text-xs rounded-md py-1 px-3 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+          >
+            Use Template
+          </button>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
