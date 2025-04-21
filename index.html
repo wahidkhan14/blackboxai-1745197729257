@@ -22,14 +22,20 @@
   <!-- Sidebar -->
   <aside class="flex flex-col bg-[#14203f] w-64 min-h-screen">
     <div class="flex items-center gap-2 px-4 py-3 border-b border-[#1e2a4a]">
-      <div class="bg-[#2a4bd7] text-white font-bold rounded-sm w-8 h-8 flex items-center justify-center text-lg">
-        S
+      <div class="w-8 h-8 flex flex-col items-center justify-center">
+        <!-- Loader with swift bird and pen icons -->
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+          alt="Swift Bird"
+          class="w-6 h-6 animate-bounce"
+        />
+        <i class="fas fa-pen text-ccolor text-sm mt-1 animate-pulse"></i>
       </div>
-      <span class="font-semibold text-white text-sm select-none">SignFlow</span>
+      <span class="font-semibold text-ccolor text-sm select-none">Swift Sign</span>
     </div>
     <button
       class="mx-4 mt-4 mb-6 bg-gradient-to-r from-[#6b4bff] to-[#8a4bff] text-white text-sm font-semibold rounded-md py-2 px-3 flex items-center gap-2 hover:brightness-110 transition"
-      onclick="showTab('dashboard')"
+      onclick="showTab('new-document')"
     >
       <i class="fas fa-plus"></i> New Document
     </button>
@@ -66,14 +72,7 @@
       >
         <i class="fas fa-shield-alt"></i> Compliance
       </button>
-      <button
-        class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
-        data-tab="new-document"
-        type="button"
-        onclick="showTab('new-document')"
-      >
-        <i class="fas fa-plus"></i> New Document
-      </button>
+      <!-- Removed duplicate New Document button -->
       <button
         class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
         data-tab="settings"
@@ -541,7 +540,187 @@
 
       <!-- Contacts Tab -->
       <div id="contacts" class="tab-content hidden">
-        <h1 class="text-white text-xl font-bold">Contacts</h1>
+        <section>
+          <h1 class="text-white font-bold text-lg mb-1 border-b border-[#1B2747] pb-2 inline-block">Contacts</h1>
+          <p class="text-[#B0B7C3] mb-4 text-sm max-w-xl">
+            Manage your document recipients and signers
+          </p>
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+            <div class="flex-1 max-w-xs">
+              <div class="relative">
+                <input
+                  type="search"
+                  placeholder="Search contacts..."
+                  class="w-full rounded-lg bg-[#1B2747] text-[#B0B7C3] placeholder-[#B0B7C3] py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-[#5B3FFF]"
+                />
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[#5B7FFF]"></i>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="bg-[#1B2747] hover:bg-[#2B3A5A] text-[#B0B7C3] text-sm rounded-md py-2 px-3 flex items-center gap-2"
+              >
+                <i class="fas fa-filter"></i> Filter
+              </button>
+              <button
+                type="button"
+                class="bg-[#2B5AFF] hover:bg-[#3B6FFF] text-white text-sm rounded-md py-2 px-4 flex items-center gap-2"
+              >
+                <i class="fas fa-user-plus"></i> Add Contact
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-[#B0B7C3] border-separate border-spacing-y-2">
+              <thead>
+                <tr class="border-b border-[#1B2747]">
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Name</th>
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Email</th>
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Company</th>
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Status</th>
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Last Signed</th>
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]"></th>
+                  <th class="py-2 px-3 font-normal border-b border-[#1B2747]"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-[#1B2747]">
+                  <td class="py-3 px-3">Sarah Johnson</td>
+                  <td class="py-3 px-3">sarah.johnson@example.com</td>
+                  <td class="py-3 px-3">Acme Corp</td>
+                  <td class="py-3 px-3">
+                    <span
+                      class="inline-flex items-center gap-1 bg-[#0F3D2F] text-[#3BFF7D] text-xs rounded-full px-2 py-0.5 select-none"
+                    >
+                      <i class="fas fa-check"></i> Active
+                    </span>
+                  </td>
+                  <td class="py-3 px-3">2 days ago</td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="Email Sarah Johnson" class="hover:text-[#5B7FFF]">
+                      <i class="far fa-envelope"></i>
+                    </button>
+                  </td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="More options for Sarah Johnson" class="hover:text-[#5B7FFF]">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="border-b border-[#1B2747]">
+                  <td class="py-3 px-3">Robert Wilson</td>
+                  <td class="py-3 px-3">robert.wilson@example.com</td>
+                  <td class="py-3 px-3">XYZ Inc</td>
+                  <td class="py-3 px-3">
+                    <span
+                      class="inline-flex items-center gap-1 bg-[#0F3D2F] text-[#3BFF7D] text-xs rounded-full px-2 py-0.5 select-none"
+                    >
+                      <i class="fas fa-check"></i> Active
+                    </span>
+                  </td>
+                  <td class="py-3 px-3">1 week ago</td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="Email Robert Wilson" class="hover:text-[#5B7FFF]">
+                      <i class="far fa-envelope"></i>
+                    </button>
+                  </td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="More options for Robert Wilson" class="hover:text-[#5B7FFF]">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="border-b border-[#1B2747]">
+                  <td class="py-3 px-3">Emily Davis</td>
+                  <td class="py-3 px-3">emily.davis@example.com</td>
+                  <td class="py-3 px-3">Global Solutions</td>
+                  <td class="py-3 px-3">
+                    <span
+                      class="inline-flex items-center gap-1 bg-[#4B3A00] text-[#FFB800] text-xs rounded-full px-2 py-0.5 select-none"
+                    >
+                      <i class="fas fa-clock"></i> Pending
+                    </span>
+                  </td>
+                  <td class="py-3 px-3">Never</td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="Email Emily Davis" class="hover:text-[#5B7FFF]">
+                      <i class="far fa-envelope"></i>
+                    </button>
+                  </td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="More options for Emily Davis" class="hover:text-[#5B7FFF]">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="border-b border-[#1B2747]">
+                  <td class="py-3 px-3">Michael Brown</td>
+                  <td class="py-3 px-3">michael.brown@example.com</td>
+                  <td class="py-3 px-3">Tech Innovations</td>
+                  <td class="py-3 px-3">
+                    <span
+                      class="inline-flex items-center gap-1 bg-[#0F3D2F] text-[#3BFF7D] text-xs rounded-full px-2 py-0.5 select-none"
+                    >
+                      <i class="fas fa-check"></i> Active
+                    </span>
+                  </td>
+                  <td class="py-3 px-3">Yesterday</td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="Email Michael Brown" class="hover:text-[#5B7FFF]">
+                      <i class="far fa-envelope"></i>
+                    </button>
+                  </td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="More options for Michael Brown" class="hover:text-[#5B7FFF]">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="border-b border-[#1B2747]">
+                  <td class="py-3 px-3">Jennifer Martinez</td>
+                  <td class="py-3 px-3">jennifer.martinez@example.com</td>
+                  <td class="py-3 px-3">Smart Systems</td>
+                  <td class="py-3 px-3">
+                    <span
+                      class="inline-flex items-center gap-1 bg-[#4B3A00] text-[#FFB800] text-xs rounded-full px-2 py-0.5 select-none"
+                    >
+                      <i class="fas fa-clock"></i> Pending
+                    </span>
+                  </td>
+                  <td class="py-3 px-3">Never</td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="Email Jennifer Martinez" class="hover:text-[#5B7FFF]">
+                      <i class="far fa-envelope"></i>
+                    </button>
+                  </td>
+                  <td class="py-3 px-3 text-center">
+                    <button aria-label="More options for Jennifer Martinez" class="hover:text-[#5B7FFF]">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-6 flex justify-end gap-3 text-sm text-[#B0B7C3]">
+            <button
+              type="button"
+              class="bg-[#1B2747] hover:bg-[#2B3A5A] rounded-md py-1.5 px-4"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              class="bg-[#1B2747] hover:bg-[#2B3A5A] rounded-md py-1.5 px-4"
+            >
+              Next
+            </button>
+          </div>
+        </section>
       </div>
 
       <!-- Compliance Tab -->
