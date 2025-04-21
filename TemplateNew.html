@@ -1,0 +1,238 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SignFlow - Create New Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#070B1E] text-white min-h-screen flex flex-col">
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="bg-[#0F1633] w-48 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center gap-2 px-4 py-5 border-b border-[#1A2349]">
+          <div class="w-8 h-8 rounded-md bg-[#2B4AE2] flex items-center justify-center text-white font-semibold text-lg select-none">
+            S
+          </div>
+          <span class="font-semibold text-white text-sm select-none">SignFlow</span>
+        </div>
+        <button
+          class="mx-4 mt-5 mb-6 w-[calc(100%-32px)] bg-gradient-to-r from-[#6B3BFF] to-[#3B6BFF] text-white text-sm font-semibold rounded-md py-2 flex items-center justify-center gap-2 hover:brightness-110 transition"
+          type="button"
+        >
+          <i class="fas fa-plus"></i> New Document
+        </button>
+        <nav class="flex flex-col gap-3 px-4 text-[#A3B0D9] text-sm font-medium">
+          <a href="#" class="flex items-center gap-3 hover:text-white transition">
+            <i class="fas fa-th-large text-base w-5"></i> Dashboard
+          </a>
+          <a href="#" class="flex items-center gap-3 bg-[#1A2349] rounded-md px-3 py-2 text-white transition">
+            <i class="fas fa-file-alt text-base w-5"></i> Templates
+          </a>
+          <a href="#" class="flex items-center gap-3 hover:text-white transition">
+            <i class="fas fa-user-friends text-base w-5"></i> Contacts
+          </a>
+          <a href="#" class="flex items-center gap-3 hover:text-white transition">
+            <i class="fas fa-cog text-base w-5"></i> Settings
+          </a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-3 px-4 py-4 border-t border-[#1A2349] text-xs text-[#A3B0D9]">
+        <div class="w-6 h-6 rounded-full bg-[#1A2349] flex items-center justify-center text-[#3B6BFF]">
+          <i class="fas fa-shield-alt text-sm"></i>
+        </div>
+        <div>
+          <p class="text-[#A3B0D9] font-semibold">Compliance</p>
+          <p class="text-[#6B7A9C] text-[10px] leading-3">Your documents are secure and compliant</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top bar -->
+      <header class="flex items-center justify-between bg-[#0B0F22] px-6 py-4 border-b border-[#1A2349]">
+        <div class="flex-1 max-w-md">
+          <input
+            type="search"
+            placeholder="Search..."
+            class="w-full bg-[#0B0F22] rounded-full py-2 px-4 text-[#A3B0D9] placeholder-[#3B4A7A] focus:outline-none focus:ring-2 focus:ring-[#3B6BFF] transition"
+          />
+        </div>
+        <div class="flex items-center gap-6 text-[#A3B0D9] text-lg">
+          <button aria-label="Toggle dark mode" class="hover:text-white transition">
+            <i class="fas fa-sun"></i>
+          </button>
+          <button aria-label="Notifications" class="hover:text-white transition relative">
+            <i class="fas fa-bell"></i>
+          </button>
+          <button aria-label="Settings" class="hover:text-white transition">
+            <i class="fas fa-cog"></i>
+          </button>
+          <button
+            aria-label="User profile"
+            class="w-8 h-8 rounded-full bg-[#1A2349] flex items-center justify-center text-[#A3B0D9] hover:text-white transition"
+          >
+            <i class="fas fa-user"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content area -->
+      <section class="flex flex-1 overflow-hidden px-6 py-6">
+        <!-- Left panel -->
+        <div class="w-80 flex flex-col pr-6 border-r border-[#1A2349] overflow-y-auto">
+          <h2 class="text-white font-semibold text-sm mb-6 select-none">Create New Document</h2>
+
+          <form class="flex flex-col gap-6 border border-[#3B6BFF] rounded-lg p-4">
+            <div class="flex flex-col gap-1">
+              <label for="docName" class="text-xs font-semibold select-none">Document Name</label>
+              <input
+                id="docName"
+                type="text"
+                placeholder="Enter document name"
+                class="bg-[#0B163A] rounded-md py-2 px-3 text-[#6B7A9C] text-xs placeholder-[#3B4A7A] focus:outline-none focus:ring-2 focus:ring-[#3B6BFF] transition"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="msgRecipients" class="text-xs font-semibold select-none">Message to Recipients (Optional)</label>
+              <textarea
+                id="msgRecipients"
+                rows="4"
+                placeholder="Add a message to your recipients..."
+                class="bg-[#0B163A] rounded-md py-2 px-3 text-[#6B7A9C] text-xs placeholder-[#3B4A7A] resize-none focus:outline-none focus:ring-2 focus:ring-[#3B6BFF] transition"
+              ></textarea>
+            </div>
+
+            <div class="flex flex-col gap-3 mt-2">
+              <h3 class="text-xs font-semibold text-white select-none">Content Tools</h3>
+              <div class="flex flex-col gap-2">
+                <div class="bg-[#D9E8FF] border border-[#3B6BFF] rounded-md px-3 py-2 text-xs text-[#3B6BFF] w-24 select-none">
+                  <div class="flex items-center gap-1 mb-0.5">
+                    <i class="fas fa-file-signature text-[10px]"></i>
+                    <span class="font-semibold">Signature</span>
+                  </div>
+                  <div class="italic text-[9px] font-light">John Smith</div>
+                </div>
+
+                <div class="bg-[#FFF4D9] border border-[#F7D070] rounded-md px-3 py-2 text-xs text-[#F7B500] w-24 select-none">
+                  <div class="font-semibold mb-0.5">TXT Text</div>
+                  <div class="italic text-[9px] font-light">Jane Doe</div>
+                </div>
+
+                <div class="bg-[#D9FFE9] border border-[#3BFF7A] rounded-md px-3 py-2 text-xs text-[#00B35C] w-24 select-none">
+                  <div class="font-semibold mb-0.5">DT Date</div>
+                  <div class="italic text-[9px] font-light">John Smith</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="border border-dashed border-[#1A2349] rounded-md flex flex-col items-center justify-center py-10 text-center text-[#6B7A9C] text-xs cursor-pointer hover:border-[#3B6BFF] transition mt-auto"
+            >
+              <i class="fas fa-upload text-lg mb-2"></i>
+              <p class="font-semibold text-white mb-1 select-none">Drag and drop files here</p>
+              <p class="mb-3 select-none">Support for PDF, DOC, DOCX files</p>
+              <button
+                type="button"
+                class="bg-[#0B163A] text-[#3B6BFF] text-xs font-semibold px-4 py-1 rounded-md hover:brightness-110 transition"
+              >
+                Browse files
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-semibold text-[#6B7A9C] select-none mt-6">
+              <span>Recipients</span>
+              <button type="button" class="flex items-center gap-1 text-[#3B6BFF] hover:underline">
+                <i class="fas fa-user-plus text-[10px]"></i> Add
+              </button>
+            </div>
+
+            <div class="flex gap-2">
+              <div
+                class="w-7 h-7 rounded-full bg-[#1A2349] flex items-center justify-center text-white text-xs font-semibold select-none"
+                title="Na"
+              >
+                Na
+              </div>
+              <div
+                class="w-7 h-7 rounded-full bg-[#1A2349] flex items-center justify-center text-white text-xs font-semibold select-none"
+                title="Em"
+              >
+                Em
+              </div>
+              <div
+                class="w-7 h-7 rounded-full bg-[#1A2349] flex items-center justify-center text-white text-xs font-semibold select-none"
+                title="Ri"
+              >
+                Ri
+              </div>
+              <button
+                type="button"
+                class="w-7 h-7 rounded-full bg-[#1A2349] flex items-center justify-center text-[#6B7A9C] text-xs font-semibold hover:bg-[#3B6BFF] hover:text-white transition"
+                aria-label="Remove recipient"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right panel -->
+        <div class="flex-1 flex flex-col overflow-hidden ml-6">
+          <div class="flex items-center gap-4 border-b border-[#1A2349] pb-2 mb-4 select-none">
+            <button
+              type="button"
+              class="bg-[#1A2349] text-[#3B6BFF] text-xs font-semibold rounded-md px-3 py-1"
+            >
+              Design
+            </button>
+            <button
+              type="button"
+              class="text-[#6B7A9C] text-xs font-semibold rounded-md px-3 py-1"
+            >
+              Preview
+            </button>
+            <div class="flex-1"></div>
+            <button
+              type="button"
+              class="bg-[#1A2349] text-[#6B7A9C] text-xs font-semibold rounded-md px-4 py-2 hover:bg-[#3B6BFF]/20 transition"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="bg-[#3B6BFF] text-white text-xs font-semibold rounded-md px-4 py-2 hover:brightness-110 transition"
+            >
+              Send
+            </button>
+          </div>
+
+          <div
+            class="flex-1 bg-white rounded-md relative max-w-4xl mx-auto"
+            style="min-height: 400px;"
+          >
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[#A3B0D9] select-none">
+              Upload a document
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
