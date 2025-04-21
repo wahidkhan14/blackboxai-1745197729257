@@ -1,0 +1,284 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacts - SignFlow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#0B1120] text-white min-h-screen flex flex-col">
+  <div class="flex flex-1">
+    <!-- Sidebar -->
+    <aside class="bg-[#121B2E] w-48 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center gap-2 px-4 py-4 border-b border-[#1B2747]">
+          <div class="w-8 h-8 rounded-md bg-[#2B4AE2] flex items-center justify-center text-white font-semibold text-lg select-none">
+            S
+          </div>
+          <span class="font-semibold text-white text-sm select-none">SignFlow</span>
+        </div>
+        <button
+          class="mx-4 mt-4 mb-6 w-[calc(100%-2rem)] bg-gradient-to-r from-[#5B3FFF] to-[#7B3FFF] text-white text-sm font-medium rounded-md py-2 flex items-center justify-center gap-2"
+          type="button"
+        >
+          <i class="fas fa-plus"></i> New Document
+        </button>
+        <nav class="flex flex-col gap-2 px-4 text-sm text-[#B0B7C3]">
+          <a href="#" class="flex items-center gap-3 py-2 hover:text-white">
+            <i class="fas fa-th-large text-base"></i> Dashboard
+          </a>
+          <a href="#" class="flex items-center gap-3 py-2 hover:text-white">
+            <i class="far fa-file-alt text-base"></i> Templates
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 py-2 border border-white border-opacity-60 rounded-md text-white"
+            aria-current="page"
+          >
+            <i class="far fa-address-book text-base"></i> Contacts
+          </a>
+          <a href="#" class="flex items-center gap-3 py-2 hover:text-white">
+            <i class="fas fa-cog text-base"></i> Settings
+          </a>
+        </nav>
+      </div>
+      <div class="mb-6 px-4 flex items-center gap-3 text-xs text-[#B0B7C3]">
+        <div class="w-6 h-6 rounded-full bg-[#1B2747] flex items-center justify-center">
+          <i class="fas fa-shield-alt text-[#2B4AE2] text-sm"></i>
+        </div>
+        <div>
+          <p class="font-semibold text-[#5B7FFF]">Compliance</p>
+          <p class="text-xs">Your documents are secure and compliant</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <header class="flex items-center justify-between mb-6">
+        <div class="flex-1 max-w-lg">
+          <div class="relative">
+            <input
+              type="search"
+              placeholder="Search..."
+              class="w-full rounded-lg bg-[#1B2747] text-[#B0B7C3] placeholder-[#B0B7C3] py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-[#5B3FFF]"
+            />
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[#5B7FFF]"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6 text-[#B0B7C3]">
+          <button aria-label="Toggle dark mode" class="hover:text-white">
+            <i class="fas fa-sun"></i>
+          </button>
+          <button aria-label="Notifications" class="hover:text-white">
+            <i class="far fa-bell"></i>
+          </button>
+          <button aria-label="Settings" class="hover:text-white">
+            <i class="fas fa-cog"></i>
+          </button>
+          <button
+            aria-label="User profile"
+            class="w-8 h-8 rounded-full bg-[#1B2747] flex items-center justify-center text-sm font-semibold text-white"
+          >
+            U
+          </button>
+        </div>
+      </header>
+
+      <section>
+        <h1 class="text-white font-bold text-lg mb-1 border-b border-[#1B2747] pb-2 inline-block">Contacts</h1>
+        <p class="text-[#B0B7C3] mb-4 text-sm max-w-xl">
+          Manage your document recipients and signers
+        </p>
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+          <div class="flex-1 max-w-xs">
+            <div class="relative">
+              <input
+                type="search"
+                placeholder="Search contacts..."
+                class="w-full rounded-lg bg-[#1B2747] text-[#B0B7C3] placeholder-[#B0B7C3] py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-[#5B3FFF]"
+              />
+              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[#5B7FFF]"></i>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button
+              type="button"
+              class="bg-[#1B2747] hover:bg-[#2B3A5A] text-[#B0B7C3] text-sm rounded-md py-2 px-3 flex items-center gap-2"
+            >
+              <i class="fas fa-filter"></i> Filter
+            </button>
+            <button
+              type="button"
+              class="bg-[#2B5AFF] hover:bg-[#3B6FFF] text-white text-sm rounded-md py-2 px-4 flex items-center gap-2"
+            >
+              <i class="fas fa-user-plus"></i> Add Contact
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-[#B0B7C3] border-separate border-spacing-y-2">
+            <thead>
+              <tr class="border-b border-[#1B2747]">
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Name</th>
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Email</th>
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Company</th>
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Status</th>
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]">Last Signed</th>
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]"></th>
+                <th class="py-2 px-3 font-normal border-b border-[#1B2747]"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[#1B2747]">
+                <td class="py-3 px-3">Sarah Johnson</td>
+                <td class="py-3 px-3">sarah.johnson@example.com</td>
+                <td class="py-3 px-3">Acme Corp</td>
+                <td class="py-3 px-3">
+                  <span
+                    class="inline-flex items-center gap-1 bg-[#0F3D2F] text-[#3BFF7D] text-xs rounded-full px-2 py-0.5 select-none"
+                  >
+                    <i class="fas fa-check"></i> Active
+                  </span>
+                </td>
+                <td class="py-3 px-3">2 days ago</td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="Email Sarah Johnson" class="hover:text-[#5B7FFF]">
+                    <i class="far fa-envelope"></i>
+                  </button>
+                </td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="More options for Sarah Johnson" class="hover:text-[#5B7FFF]">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#1B2747]">
+                <td class="py-3 px-3">Robert Wilson</td>
+                <td class="py-3 px-3">robert.wilson@example.com</td>
+                <td class="py-3 px-3">XYZ Inc</td>
+                <td class="py-3 px-3">
+                  <span
+                    class="inline-flex items-center gap-1 bg-[#0F3D2F] text-[#3BFF7D] text-xs rounded-full px-2 py-0.5 select-none"
+                  >
+                    <i class="fas fa-check"></i> Active
+                  </span>
+                </td>
+                <td class="py-3 px-3">1 week ago</td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="Email Robert Wilson" class="hover:text-[#5B7FFF]">
+                    <i class="far fa-envelope"></i>
+                  </button>
+                </td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="More options for Robert Wilson" class="hover:text-[#5B7FFF]">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#1B2747]">
+                <td class="py-3 px-3">Emily Davis</td>
+                <td class="py-3 px-3">emily.davis@example.com</td>
+                <td class="py-3 px-3">Global Solutions</td>
+                <td class="py-3 px-3">
+                  <span
+                    class="inline-flex items-center gap-1 bg-[#4B3A00] text-[#FFB800] text-xs rounded-full px-2 py-0.5 select-none"
+                  >
+                    <i class="fas fa-clock"></i> Pending
+                  </span>
+                </td>
+                <td class="py-3 px-3">Never</td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="Email Emily Davis" class="hover:text-[#5B7FFF]">
+                    <i class="far fa-envelope"></i>
+                  </button>
+                </td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="More options for Emily Davis" class="hover:text-[#5B7FFF]">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#1B2747]">
+                <td class="py-3 px-3">Michael Brown</td>
+                <td class="py-3 px-3">michael.brown@example.com</td>
+                <td class="py-3 px-3">Tech Innovations</td>
+                <td class="py-3 px-3">
+                  <span
+                    class="inline-flex items-center gap-1 bg-[#0F3D2F] text-[#3BFF7D] text-xs rounded-full px-2 py-0.5 select-none"
+                  >
+                    <i class="fas fa-check"></i> Active
+                  </span>
+                </td>
+                <td class="py-3 px-3">Yesterday</td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="Email Michael Brown" class="hover:text-[#5B7FFF]">
+                    <i class="far fa-envelope"></i>
+                  </button>
+                </td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="More options for Michael Brown" class="hover:text-[#5B7FFF]">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#1B2747]">
+                <td class="py-3 px-3">Jennifer Martinez</td>
+                <td class="py-3 px-3">jennifer.martinez@example.com</td>
+                <td class="py-3 px-3">Smart Systems</td>
+                <td class="py-3 px-3">
+                  <span
+                    class="inline-flex items-center gap-1 bg-[#4B3A00] text-[#FFB800] text-xs rounded-full px-2 py-0.5 select-none"
+                  >
+                    <i class="fas fa-clock"></i> Pending
+                  </span>
+                </td>
+                <td class="py-3 px-3">Never</td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="Email Jennifer Martinez" class="hover:text-[#5B7FFF]">
+                    <i class="far fa-envelope"></i>
+                  </button>
+                </td>
+                <td class="py-3 px-3 text-center">
+                  <button aria-label="More options for Jennifer Martinez" class="hover:text-[#5B7FFF]">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-3 text-sm text-[#B0B7C3]">
+          <button
+            type="button"
+            class="bg-[#1B2747] hover:bg-[#2B3A5A] rounded-md py-1.5 px-4"
+          >
+            Previous
+          </button>
+          <button
+            type="button"
+            class="bg-[#1B2747] hover:bg-[#2B3A5A] rounded-md py-1.5 px-4"
+          >
+            Next
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
