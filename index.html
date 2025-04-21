@@ -1,0 +1,916 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SignFlow Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#0f172a] text-white min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="flex flex-col bg-[#14203f] w-64 min-h-screen">
+    <div class="flex items-center gap-2 px-4 py-3 border-b border-[#1e2a4a]">
+      <div class="bg-[#2a4bd7] text-white font-bold rounded-sm w-8 h-8 flex items-center justify-center text-lg">
+        S
+      </div>
+      <span class="font-semibold text-white text-sm select-none">SignFlow</span>
+    </div>
+    <button
+      class="mx-4 mt-4 mb-6 bg-gradient-to-r from-[#6b4bff] to-[#8a4bff] text-white text-sm font-semibold rounded-md py-2 px-3 flex items-center gap-2 hover:brightness-110 transition"
+      onclick="showTab('dashboard')"
+    >
+      <i class="fas fa-plus"></i> New Document
+    </button>
+    <nav class="flex flex-col gap-1 px-2">
+      <button
+        class="flex items-center gap-3 text-[#a0aec0] bg-[#1e2a4a] rounded-md py-2 px-4 text-sm font-medium w-full text-left"
+        data-tab="dashboard"
+        type="button"
+        onclick="showTab('dashboard')"
+      >
+        <i class="fas fa-th-large"></i> Dashboard
+      </button>
+      <button
+        class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
+        data-tab="templates"
+        type="button"
+        onclick="showTab('templates')"
+      >
+        <i class="far fa-file-alt"></i> Templates
+      </button>
+      <button
+        class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
+        data-tab="contacts"
+        type="button"
+        onclick="showTab('contacts')"
+      >
+        <i class="fas fa-user-friends"></i> Contacts
+      </button>
+      <button
+        class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
+        data-tab="compliance"
+        type="button"
+        onclick="showTab('compliance')"
+      >
+        <i class="fas fa-shield-alt"></i> Compliance
+      </button>
+      <button
+        class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
+        data-tab="new-document"
+        type="button"
+        onclick="showTab('new-document')"
+      >
+        <i class="fas fa-plus"></i> New Document
+      </button>
+      <button
+        class="flex items-center gap-3 text-[#a0aec0] hover:text-white rounded-md py-2 px-4 text-sm font-medium w-full text-left"
+        data-tab="settings"
+        type="button"
+        onclick="showTab('settings')"
+      >
+        <i class="fas fa-cog"></i> Settings
+      </button>
+    </nav>
+    <div class="mt-auto bg-[#14203f] border-t border-[#1e2a4a] p-4 flex flex-col gap-3 text-[#4a6ed1] text-xs">
+      <p class="text-[#7a8dbf] text-[10px] leading-tight max-w-xs">
+        Your documents are secure and compliant with industry regulations.
+      </p>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 flex flex-col bg-[#0f172a]">
+    <!-- Top bar -->
+    <header
+      class="flex items-center justify-between px-6 py-3 border-b border-[#1e2a4a] bg-[#0f172a]"
+    >
+      <div class="flex-1 max-w-lg">
+        <div
+          class="relative text-[#a0aec0] text-sm rounded-md bg-[#14203f] px-4 py-2 flex items-center"
+        >
+          <i class="fas fa-search absolute left-3"></i>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="bg-transparent pl-8 pr-3 py-1 w-full text-sm placeholder-[#a0aec0] focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-3 ml-6">
+        <button
+          class="p-2 rounded-md hover:bg-[#1e2a4a] transition"
+          aria-label="Toggle dark mode"
+          type="button"
+        >
+          <i class="fas fa-sun text-[#a0aec0]"></i>
+        </button>
+        <button
+          class="p-2 rounded-md hover:bg-[#1e2a4a] transition"
+          aria-label="Notifications"
+          type="button"
+        >
+          <i class="fas fa-bell text-[#a0aec0]"></i>
+        </button>
+        <button
+          class="p-2 rounded-md hover:bg-[#1e2a4a] transition"
+          aria-label="Settings"
+          type="button"
+        >
+          <i class="fas fa-cog text-[#a0aec0]"></i>
+        </button>
+        <button
+          class="w-8 h-8 rounded-full bg-[#1e2a4a] flex items-center justify-center text-[#a0aec0]"
+          aria-label="User profile"
+          type="button"
+        >
+          <i class="fas fa-user"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <section class="p-6 space-y-6 overflow-y-auto flex-1">
+      <!-- Dashboard Tab -->
+      <div id="dashboard" class="tab-content">
+        <div>
+          <h1 class="font-bold text-white text-lg leading-tight">
+            Welcome to SignFlow
+          </h1>
+          <p class="text-[#7a8dbf] text-sm mt-1">
+            Manage and track your document signatures
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div
+            class="bg-[#14203f] rounded-lg p-4 flex items-center gap-4 max-w-xs"
+          >
+            <div
+              class="bg-[#1e2a4a] p-3 rounded-md flex items-center justify-center"
+            >
+              <i class="far fa-clock text-[#2a4bd7] text-lg"></i>
+            </div>
+            <div>
+              <p class="text-[#7a8dbf] text-xs mb-1">Documents Waiting</p>
+              <p class="font-bold text-white text-xl flex items-center gap-1">
+                4 <span class="text-[#22c55e] text-xs font-semibold">+10%</span>
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-[#14203f] rounded-lg p-4 flex items-center gap-4 max-w-xs"
+          >
+            <div
+              class="bg-[#1e2a4a] p-3 rounded-md flex items-center justify-center"
+            >
+              <i class="fas fa-check-circle text-[#22c55e] text-lg"></i>
+            </div>
+            <div>
+              <p class="text-[#7a8dbf] text-xs mb-1">Documents Completed</p>
+              <p class="font-bold text-white text-xl flex items-center gap-1">
+                12 <span class="text-[#22c55e] text-xs font-semibold">+25%</span>
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-[#14203f] rounded-lg p-4 flex items-center gap-4 max-w-xs"
+          >
+            <div
+              class="bg-[#1e2a4a] p-3 rounded-md flex items-center justify-center"
+            >
+              <i class="far fa-file-alt text-[#6b4baf] text-lg"></i>
+            </div>
+            <div>
+              <p class="text-[#7a8dbf] text-xs mb-1">Total Documents</p>
+              <p class="font-bold text-white text-xl flex items-center gap-1">
+                32 <span class="text-[#22c55e] text-xs font-semibold">+15%</span>
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-[#14203f] rounded-lg p-4 flex items-center gap-4 max-w-xs"
+          >
+            <div
+              class="bg-[#1e2a4a] p-3 rounded-md flex items-center justify-center"
+            >
+              <i class="fas fa-user-friends text-[#b36a0f] text-lg"></i>
+            </div>
+            <div>
+              <p class="text-[#7a8dbf] text-xs mb-1">Active Recipients</p>
+              <p class="font-bold text-white text-xl flex items-center gap-1">
+                8 <span class="text-[#22c55e] text-xs font-semibold">+5%</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Your Documents header -->
+        <div class="flex justify-between items-center">
+          <h2 class="font-semibold text-white text-sm">Your Documents</h2>
+          <a href="#" class="text-[#1e40af] text-xs">View All</a>
+        </div>
+
+        <!-- Inbox button -->
+        <button
+          class="bg-[#14203f] text-[#1e40af] text-xs rounded-md px-3 py-1 flex items-center gap-1 max-w-max"
+        >
+          <i class="far fa-clock"></i> Inbox
+        </button>
+
+        <!-- Documents grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl">
+          <!-- Document 1 -->
+          <div class="bg-[#14203f] rounded-lg p-4 space-y-2 relative">
+            <div class="flex items-center gap-2">
+              <i class="far fa-file-alt text-[#2a4bd7] text-lg"></i>
+              <p class="text-white text-sm font-semibold">
+                Sales Contract - <span class="font-bold">ABC Corp</span>
+              </p>
+              <button
+                class="absolute top-4 right-4 text-[#4a6ed1] hover:text-white"
+                aria-label="More options"
+              >
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+            <div>
+              <span
+                class="bg-[#2a4bd7] text-xs rounded-full px-2 py-0.5 select-none"
+                >Waiting for signatures</span
+              >
+            </div>
+            <div class="text-[10px] text-[#7a8dbf]">Progress</div>
+            <div class="w-full bg-[#1e2a4a] rounded-full h-2">
+              <div
+                class="bg-[#2a4bd7] h-2 rounded-full"
+                style="width: 50%;"
+              ></div>
+            </div>
+            <div class="flex gap-4 text-[#7a8dbf] text-xs mt-1">
+              <div class="flex items-center gap-1">
+                <i class="fas fa-user-friends"></i> 2 Recipients
+              </div>
+              <div class="flex items-center gap-1">
+                <i class="far fa-clock"></i> 3 days left
+              </div>
+            </div>
+            <div class="text-[#3a4a6a] text-[10px] mt-2 select-none">
+              Updated 2 hours ago
+            </div>
+          </div>
+
+          <!-- Document 2 -->
+          <div class="bg-[#14203f] rounded-lg p-4 space-y-2 relative">
+            <div class="flex items-center gap-2">
+              <i class="far fa-file-alt text-[#2a4bd7] text-lg"></i>
+              <p class="text-white text-sm font-semibold">
+                Employee Onboarding - <span class="font-bold">Jane Smith</span>
+              </p>
+              <button
+                class="absolute top-4 right-4 text-[#4a6ed1] hover:text-white"
+                aria-label="More options"
+              >
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+            <div>
+              <span
+                class="bg-[#7a3e00] text-xs rounded-full px-2 py-0.5 select-none"
+                >Draft</span
+              >
+            </div>
+            <div class="text-[10px] text-[#7a8dbf]">Progress</div>
+            <div class="w-full bg-[#1e2a4a] rounded-full h-2">
+              <div
+                class="bg-[#d97706] h-2 rounded-full"
+                style="width: 20%;"
+              ></div>
+            </div>
+            <div class="flex gap-4 text-[#7a8dbf] text-xs mt-1">
+              <div class="flex items-center gap-1">
+                <i class="fas fa-user-friends"></i> 1 Recipient
+              </div>
+            </div>
+            <div class="text-[#3a4a6a] text-[10px] mt-2 select-none">
+              Updated Yesterday
+            </div>
+          </div>
+
+          <!-- Document 3 -->
+          <div class="bg-[#14203f] rounded-lg p-4 space-y-2 relative">
+            <div class="flex items-center gap-2">
+              <i class="far fa-file-alt text-[#2a4bd7] text-lg"></i>
+              <p class="text-white text-sm font-semibold">
+                Vendor Agreement - <span class="font-bold">XYZ Inc</span>
+              </p>
+              <button
+                class="absolute top-4 right-4 text-[#4a6ed1] hover:text-white"
+                aria-label="More options"
+              >
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+            <div>
+              <span
+                class="bg-[#166534] text-xs rounded-full px-2 py-0.5 select-none"
+                >Completed</span
+              >
+            </div>
+            <div class="text-[10px] text-[#7a8dbf]">Progress</div>
+            <div class="w-full bg-[#1e2a4a] rounded-full h-2">
+              <div
+                class="bg-[#22c55e] h-2 rounded-full"
+                style="width: 100%;"
+              ></div>
+            </div>
+            <div class="flex gap-4 text-[#7a8dbf] text-xs mt-1">
+              <div class="flex items-center gap-1">
+                <i class="fas fa-user-friends"></i> 3 Recipients
+              </div>
+            </div>
+            <div class="text-[#3a4a6a] text-[10px] mt-2 select-none">
+              Updated 3 days ago
+            </div>
+          </div>
+
+          <!-- Document 4 -->
+          <div class="bg-[#14203f] rounded-lg p-4 space-y-2 relative max-w-md">
+            <div class="flex items-center gap-2">
+              <i class="far fa-file-alt text-[#2a4bd7] text-lg"></i>
+              <p class="text-white text-sm font-semibold">
+                NDA - <span class="font-bold">Project Phoenix</span>
+              </p>
+              <button
+                class="absolute top-4 right-4 text-[#4a6ed1] hover:text-white"
+                aria-label="More options"
+              >
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+            <div>
+              <span
+                class="bg-[#991b1b] text-xs rounded-full px-2 py-0.5 select-none"
+                >Expired</span
+              >
+            </div>
+            <div class="text-[10px] text-[#7a8dbf]">Progress</div>
+            <div class="w-full bg-[#1e2a4a] rounded-full h-2">
+              <div
+                class="bg-[#ef4444] h-2 rounded-full"
+                style="width: 75%;"
+              ></div>
+            </div>
+            <div class="flex gap-4 text-[#7a8dbf] text-xs mt-1">
+              <div class="flex items-center gap-1">
+                <i class="fas fa-user-friends"></i> 2 Recipients
+              </div>
+            </div>
+            <div class="text-[#3a4a6a] text-[10px] mt-2 select-none">
+              Updated 1 week ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Templates Tab -->
+      <div id="templates" class="tab-content hidden">
+        <main class="flex-1 p-6 bg-[#0B1229] text-[#D1D5DB] font-sans min-h-full">
+          <!-- Document Templates header -->
+          <section class="mb-6 max-w-5xl">
+            <h1 class="text-white font-bold text-lg mb-1">Document Templates</h1>
+            <p class="text-[#94A3B8] text-sm">
+              Browse and use pre-built templates or create your own
+            </p>
+          </section>
+
+          <!-- Search and controls -->
+          <section
+            class="mb-6 max-w-5xl flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0"
+          >
+            <input
+              type="search"
+              placeholder="Search templates..."
+              class="flex-1 max-w-lg bg-[#14213D] rounded-md py-2 px-4 text-[#94A3B8] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              aria-label="Search templates"
+            />
+            <div class="flex items-center space-x-3">
+              <button
+                class="bg-[#14213D] text-[#94A3B8] text-sm rounded-md py-2 px-4 hover:bg-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              >
+                Sort
+              </button>
+              <button
+                class="bg-[#14213D] text-[#94A3B8] text-sm rounded-md py-2 px-4 hover:bg-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              >
+                Filter
+              </button>
+              <button
+                class="bg-[#2563EB] text-white text-sm rounded-md py-2 px-4 flex items-center space-x-1 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Create Template</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Popular button -->
+          <section class="mb-6 max-w-5xl">
+            <button
+              class="bg-[#14213D] text-[#94A3B8] text-sm rounded-md py-2 px-4 flex items-center space-x-1 shadow-[0_0_10px_#14213D] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+            >
+              <i class="far fa-star"></i>
+              <span>Popular</span>
+            </button>
+          </section>
+
+          <!-- Templates grid -->
+          <section
+            class="max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            aria-label="Document templates"
+          >
+            <!-- Template 1 -->
+            <article
+              class="bg-[#14213D] rounded-md p-4 flex flex-col justify-between"
+              tabindex="0"
+            >
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="far fa-file-alt text-[#2563EB] text-lg"></i>
+                <div>
+                  <h2 class="text-white font-semibold text-sm leading-tight">
+                    Sales Contract
+                  </h2>
+                  <p class="text-[#94A3B8] text-xs">Sales</p>
+                </div>
+                <span
+                  class="ml-auto bg-[#92400E] text-[10px] font-semibold rounded-full px-2 py-0.5 select-none"
+                  >Popular</span
+                >
+              </div>
+              <p class="text-[#94A3B8] text-xs mb-4 leading-snug">
+                Standard sales agreement template with customizable terms and
+                signature fields
+              </p>
+              <div class="flex items-center space-x-3 text-xs text-[#D1D5DB]">
+                <span>Preview</span>
+                <button
+                  class="bg-[#2563EB] text-white text-xs rounded-md py-1 px-3 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                >
+                  Use Template
+                </button>
+              </div>
+            </article>
+
+            <!-- Template 2 -->
+            <article
+              class="bg-[#14213D] rounded-md p-4 flex flex-col justify-between"
+              tabindex="0"
+            >
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="far fa-file-alt text-[#2563EB] text-lg"></i>
+                <div>
+                  <h2 class="text-white font-semibold text-sm leading-tight">
+                    NDA Agreement
+                  </h2>
+                  <p class="text-[#94A3B8] text-xs">Legal</p>
+                </div>
+                <span
+                  class="ml-auto bg-[#92400E] text-[10px] font-semibold rounded-full px-2 py-0.5 select-none"
+                  >Popular</span
+                >
+              </div>
+              <p class="text-[#94A3B8] text-xs mb-4 leading-snug">
+                Comprehensive non-disclosure agreement to protect sensitive
+                information
+              </p>
+              <div class="flex items-center space-x-3 text-xs text-[#D1D5DB]">
+                <span>Preview</span>
+                <button
+                  class="bg-[#2563EB] text-white text-xs rounded-md py-1 px-3 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                >
+                  Use Template
+                </button>
+              </div>
+            </article>
+
+            <!-- Template 3 -->
+            <article
+              class="bg-[#14213D] rounded-md p-4 flex flex-col justify-between"
+              tabindex="0"
+            >
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="far fa-file-alt text-[#2563EB] text-lg"></i>
+                <div>
+                  <h2 class="text-white font-semibold text-sm leading-tight">
+                    HIPAA Business Associate Agreement
+                  </h2>
+                  <p class="text-[#94A3B8] text-xs">Healthcare</p>
+                </div>
+                <span
+                  class="ml-auto bg-[#92400E] text-[10px] font-semibold rounded-full px-2 py-0.5 select-none"
+                  >Popular</span
+                >
+              </div>
+              <p class="text-[#94A3B8] text-xs mb-4 leading-snug">
+                Agreement ensuring HIPAA compliance for healthcare data sharing
+              </p>
+              <div class="flex items-center space-x-3 text-xs text-[#D1D5DB]">
+                <span>Preview</span>
+                <button
+                  class="bg-[#2563EB] text-white text-xs rounded-md py-1 px-3 hover:bg-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                >
+                  Use Template
+                </button>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+
+      <!-- Contacts Tab -->
+      <div id="contacts" class="tab-content hidden">
+        <h1 class="text-white text-xl font-bold">Contacts</h1>
+      </div>
+
+      <!-- Compliance Tab -->
+      <div id="compliance" class="tab-content hidden">
+        <h1 class="font-bold text-white text-lg leading-tight">Compliance</h1>
+        <p class="text-[#7a8dbf] text-sm mt-1 max-w-3xl">
+          Your documents are secure and compliant with industry regulations.
+        </p>
+        <div class="mt-6 bg-[#14203f] rounded-lg p-6 max-w-3xl">
+          <h2 class="text-white font-semibold mb-4">Compliance Details</h2>
+          <ul class="list-disc list-inside text-[#7a8dbf] text-sm space-y-2">
+            <li>Industry-standard encryption</li>
+            <li>Audit trails for all document actions</li>
+            <li>Compliance with GDPR, HIPAA, and other regulations</li>
+            <li>Secure user authentication and access controls</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- New Document Tab -->
+      <div id="new-document" class="tab-content hidden">
+        <!-- Moved New Document content from Compliance tab here -->
+        <div class="flex flex-1 overflow-hidden px-6 py-6 bg-[#0B1229] text-[#D1D5DB] font-sans min-h-full">
+          <!-- Left form -->
+          <form
+            class="flex flex-col gap-6 flex-shrink-0 w-full max-w-md border border-[#1f222a] rounded-lg p-6"
+            onsubmit="return false"
+          >
+            <h1 class="text-xl font-semibold mb-6 select-none">Create New Document</h1>
+            <div class="flex flex-col gap-2">
+              <label for="docName" class="text-xs font-semibold select-none"
+                >Document Name</label
+              >
+              <input
+                id="docName"
+                type="text"
+                placeholder="Enter document name"
+                class="bg-transparent border border-[#2a2f3a] rounded-md px-3 py-2 text-xs text-[#a0a6b9] placeholder:text-[#4a4f5a] focus:outline-none focus:ring-1 focus:ring-[#2a7fff]"
+              />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="msgRecipients" class="text-xs font-semibold select-none"
+                >Message to Recipients (Optional)</label
+              >
+              <textarea
+                id="msgRecipients"
+                rows="4"
+                placeholder="Add a message to your recipients..."
+                class="bg-[#16181f] border border-[#2a2f3a] rounded-md px-3 py-3 text-xs text-[#6a6a6a] placeholder:text-[#4a4f5a] resize-none focus:outline-none focus:ring-1 focus:ring-[#2a7fff]"
+              ></textarea>
+            </div>
+
+            <!-- Content tool with signature, date, text boxes -->
+            <fieldset class="border border-[#2a2f3a] rounded-md p-4 text-xs text-[#a0a6b9]">
+              <legend class="text-white font-semibold px-2 select-none">Content tool</legend>
+              <div class="flex flex-col gap-3 mt-2">
+                <div class="flex flex-col gap-1 border border-[#2a7fff] rounded-md px-3 py-2 text-[#2a7fff] select-none">
+                  <i class="fas fa-signature text-[12px]"></i>
+                  <span class="font-semibold text-[10px]">Signature</span>
+                  <span class="text-[9px] text-[#4a90e2]">John Smith</span>
+                </div>
+                <div class="flex flex-col gap-1 border border-[#2f6f3a] rounded-md px-3 py-2 text-[#2f6f3a] select-none bg-[#1f222a]">
+                  <span class="font-semibold text-[10px]">Date</span>
+                  <span class="text-[9px]">John Smith</span>
+                </div>
+                <div class="flex flex-col gap-1 border border-[#6f5f1f] rounded-md px-3 py-2 text-[#b88f2f] select-none bg-[#1f222a]">
+                  <span class="font-semibold text-[10px]">Text</span>
+                  <span class="text-[9px]">Jane Doe</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <label
+              for="fileUpload"
+              class="flex flex-col items-center justify-center border border-dashed border-[#2a2f3a] rounded-md cursor-pointer p-8 text-center text-[#6a6a6a] text-xs select-none hover:border-[#2a7fff] transition"
+            >
+              <i class="fas fa-upload text-3xl mb-2"></i>
+              <span class="font-semibold text-sm text-[#e1e6f0] mb-1"
+                >Drag and drop files here</span
+              >
+              <span class="text-[10px] mb-3">Support for PDF, DOC, DOCX files</span>
+              <button
+                type="button"
+                class="bg-[#2a7fff] text-white text-xs font-semibold rounded-md px-3 py-1 hover:brightness-110 transition"
+              >
+                Browse files
+              </button>
+              <input id="fileUpload" type="file" class="hidden" />
+            </label>
+
+            <div class="border border-[#1f222a] rounded-lg p-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold select-none">Recipients</span>
+                <button
+                  type="button"
+                  class="flex items-center gap-1 bg-[#2a7fff] text-white text-xs font-semibold rounded-md px-3 py-1 hover:brightness-110 transition"
+                >
+                  <i class="fas fa-user-plus"></i> Add
+                </button>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-[#16181f] rounded-md px-3 py-2 max-w-full overflow-x-auto"
+              >
+                <button
+                  type="button"
+                  class="flex items-center justify-center w-6 h-6 rounded-md border border-[#2a2f3a] text-[#6a6a6a] cursor-move"
+                  aria-label="Drag handle"
+                >
+                  <i class="fas fa-grip-vertical text-xs"></i>
+                </button>
+                <button
+                  type="button"
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-[#2a2f3a] text-[#a0a6b9] hover:bg-[#2a7fff] hover:text-white transition"
+                  aria-label="User avatar"
+                >
+                  <i class="fas fa-user"></i>
+                </button>
+                <button
+                  type="button"
+                  class="bg-[#2a2f3a] rounded-md px-2 py-1 text-xs text-[#a0a6b9] hover:bg-[#2a7fff] hover:text-white transition"
+                >
+                  Na
+                </button>
+                <button
+                  type="button"
+                  class="bg-[#2a2f3a] rounded-md px-2 py-1 text-xs text-[#a0a6b9] hover:bg-[#2a7fff] hover:text-white transition"
+                >
+                  Em
+                </button>
+                <button
+                  type="button"
+                  class="bg-[#2a2f3a] rounded-md px-2 py-1 text-xs text-[#a0a6b9] hover:bg-[#2a7fff] hover:text-white transition"
+                >
+                  Ro
+                </button>
+                <button
+                  type="button"
+                  class="bg-[#16181f] rounded-md w-6 h-6"
+                  aria-hidden="true"
+                ></button>
+                <button
+                  type="button"
+                  class="text-[#6a6a6a] hover:text-white transition"
+                  aria-label="Remove recipient"
+                >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Right preview -->
+          <section class="flex flex-col flex-1 max-w-full">
+            <div class="flex gap-2 mb-3">
+              <button
+                type="button"
+                class="bg-[#1f222a] text-white text-xs font-semibold rounded-md px-3 py-2"
+              >
+                Design
+              </button>
+              <button
+                type="button"
+                class="bg-[#2a2f3a] text-[#6a6a6a] text-xs font-semibold rounded-md px-3 py-2"
+              >
+                Preview
+              </button>
+            </div>
+            <div
+              class="flex flex-col bg-[#16181f] border border-[#1f222a] rounded-md flex-1 overflow-hidden"
+            >
+              <header
+                class="bg-[#1f222a] text-white text-xs font-semibold text-center py-2 select-none"
+              >
+                Document Preview
+              </header>
+              <div
+                class="flex flex-1 relative items-center justify-center text-[#a0a6b9] text-xs"
+              >
+                <span>Upload a document to preview</span>
+              </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+              <button
+                type="button"
+                class="border border-[#2a2f3a] rounded-md px-4 py-2 text-xs text-white hover:bg-[#2a2f3a] transition"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="bg-[#2a7fff] rounded-md px-4 py-2 text-xs font-semibold text-white hover:brightness-110 transition"
+              >
+                Send
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+=======
+      <!-- Compliance Tab -->
+      <div id="compliance" class="tab-content hidden">
+        <!-- Removed New Document content from here as it is moved to New Document tab -->
+        <h1 class="text-white text-xl font-bold">Compliance</h1>
+        <p class="text-[#7B8DB9] text-sm">Your documents are secure and compliant</p>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="settings" class="tab-content hidden">
+        <section class="flex flex-col md:flex-row gap-6 px-6 py-6">
+          <!-- Left nav -->
+          <nav
+            class="flex md:flex-col space-x-6 md:space-x-0 md:space-y-4 text-[#B0B8D4] text-sm font-normal min-w-[160px]"
+            aria-label="Settings navigation"
+          >
+            <a
+              href="#"
+              class="flex items-center space-x-3 bg-[#1B2A52] rounded px-4 py-3 text-white"
+              aria-current="page"
+              ><i class="fas fa-user text-base w-5"></i><span>Profile</span></a
+            >
+            <a
+              href="#"
+              class="flex items-center space-x-3 hover:text-white transition-colors px-4 py-3 rounded"
+              ><i class="fas fa-lock text-base w-5"></i><span>Security</span></a
+            >
+            <a
+              href="#"
+              class="flex items-center space-x-3 hover:text-white transition-colors px-4 py-3 rounded"
+              ><i class="fas fa-bell text-base w-5"></i><span>Notifications</span></a
+            >
+            <a
+              href="#"
+              class="flex items-center space-x-3 hover:text-white transition-colors px-4 py-3 rounded"
+              ><i class="fas fa-pen-nib text-base w-5"></i><span>Signature</span></a
+            >
+            <a
+              href="#"
+              class="flex items-center space-x-3 hover:text-white transition-colors px-4 py-3 rounded"
+              ><i class="fas fa-user-circle text-base w-5"></i><span>Account</span></a
+            >
+            <a
+              href="#"
+              class="flex items-center space-x-3 hover:text-white transition-colors px-4 py-3 rounded"
+              ><i class="fas fa-globe text-base w-5"></i
+              ><span>Language &amp; Region</span></a
+            >
+            <a
+              href="#"
+              class="flex items-center space-x-3 hover:text-white transition-colors px-4 py-3 rounded"
+              ><i class="fas fa-shield-alt text-base w-5"></i><span>Privacy</span></a
+            >
+          </nav>
+
+          <!-- Profile settings form -->
+          <form
+            class="flex-1 bg-[#121B34] rounded-lg p-6 space-y-6"
+            aria-label="Profile Settings"
+          >
+            <h2 class="text-white font-semibold text-sm select-none">Profile Settings</h2>
+            <div class="flex items-center space-x-6">
+              <div
+                class="flex items-center justify-center w-20 h-20 rounded-full bg-[#1B2A52] text-[#7B8DB9]"
+                aria-label="User profile icon"
+              >
+                <i class="fas fa-user text-3xl"></i>
+              </div>
+              <div class="flex-1 space-y-4">
+                <div class="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0">
+                  <div class="flex flex-col flex-1">
+                    <label
+                      for="firstName"
+                      class="text-[#7B8DB9] text-xs mb-1 select-none"
+                      >First Name</label
+                    >
+                    <input
+                      id="firstName"
+                      type="text"
+                      value="John"
+                      class="bg-[#1B2A52] rounded-md py-2 px-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#2B4AE2]"
+                    />
+                  </div>
+                  <div class="flex flex-col flex-1">
+                    <label
+                      for="lastName"
+                      class="text-[#7B8DB9] text-xs mb-1 select-none"
+                      >Last Name</label
+                    >
+                    <input
+                      id="lastName"
+                      type="text"
+                      value="Doe"
+                      class="bg-[#1B2A52] rounded-md py-2 px-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#2B4AE2]"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label
+                    for="email"
+                    class="text-[#7B8DB9] text-xs mb-1 select-none"
+                    >Email</label
+                  >
+                  <div class="relative">
+                    <span
+                      class="absolute left-3 top-1/2 -translate-y-1/2 text-[#7B8DB9]"
+                      ><i class="far fa-envelope"></i
+                    ></span>
+                    <input
+                      id="email"
+                      type="email"
+                      value="john.doe@example.com"
+                      class="bg-[#1B2A52] rounded-md py-2 pl-9 pr-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#2B4AE2] w-full"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label
+                    for="company"
+                    class="text-[#7B8DB9] text-xs mb-1 select-none"
+                    >Company</label
+                  >
+                  <input
+                    id="company"
+                    type="text"
+                    value="Acme Corporation"
+                    class="bg-[#1B2A52] rounded-md py-2 px-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#2B4AE2]"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-end">
+              <button
+                type="submit"
+                class="bg-[#2B4AE2] px-4 py-2 rounded text-white text-sm font-medium hover:bg-[#3a5bf0] focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#3a5bf0]"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('nav button[data-tab]');
+      tabs.forEach(tab => {
+        if (tab.id === tabName) {
+          tab.classList.remove('hidden');
+        } else {
+          tab.classList.add('hidden');
+        }
+      });
+      buttons.forEach(button => {
+        if (button.getAttribute('data-tab') === tabName) {
+          button.classList.add('bg-[#1e2a4a]', 'text-white');
+          button.classList.remove('text-[#a0aec0]');
+          button.classList.add('hover:text-white');
+        } else {
+          button.classList.remove('bg-[#1e2a4a]', 'text-white');
+          button.classList.add('text-[#a0aec0]');
+          button.classList.remove('hover:text-white');
+        }
+      });
+    }
+    // Set default active tab on page load
+    showTab('dashboard');
+  </script>
+</body>
+</html>
